@@ -1,0 +1,356 @@
+# Model registry for the HLE response matrix.
+# Each entry needs: id, display_name, group (reasoning|standard), provider, api_model_id, response_file
+#
+# Providers: openai, anthropic, google, deepseek, openrouter, together
+# Set env vars: OPENAI_API_KEY, ANTHROPIC_API_KEY, GOOGLE_API_KEY, DEEPSEEK_API_KEY, OPENROUTER_API_KEY, TOGETHER_API_KEY
+
+models:
+  # === REASONING-SPECIALIZED (N=14) ===
+  # Expensive models removed to stay under budget:
+  # - o3 (~$500-2000 for 513 questions)
+  # - o3-pro (~$500-5000)
+  # - o4-mini-high (~$200-500)
+  
+  # UNCOMMENT these if budget allows:
+  # - id: o3-2025-04-16
+  #   display_name: o3
+  #   group: reasoning
+  #   provider: openai
+  #   api_model_id: o3-2025-04-16
+  #   response_file: data/responses/raw/o3-2025-04-16.json
+  #
+  # - id: o3-pro-2025-04-16
+  #   display_name: o3-pro
+  #   group: reasoning
+  #   provider: openai
+  #   api_model_id: o3-pro-2025-04-16
+  #   response_file: data/responses/raw/o3-pro-2025-04-16.json
+  #
+  # - id: o4-mini-high
+  #   display_name: o4-mini (high)
+  #   group: reasoning
+  #   provider: openai
+  #   api_model_id: o4-mini
+  #   reasoning_effort: high
+  #   response_file: data/responses/raw/o4-mini-high.json
+
+  - id: o3-mini
+    display_name: o3-mini
+    group: reasoning
+    provider: openai
+    api_model_id: o3-mini
+    response_file: data/responses/raw/o3-mini.json
+
+  # COMMENTED OUT - Too expensive ($9.06), o3-mini performs similarly
+  # - id: o3
+  #   display_name: o3
+  #   group: reasoning
+  #   provider: openai
+  #   api_model_id: o3
+  #   response_file: data/responses/raw/o3.json
+
+  - id: o4-mini
+    display_name: o4-mini
+    group: reasoning
+    provider: openai
+    api_model_id: o4-mini
+    response_file: data/responses/raw/o4-mini.json
+
+  # COMMENTED OUT - Too expensive ($10.81), have GPT-4o/4.1 for standard coverage
+  # - id: gpt-5
+  #   display_name: GPT-5 (reasoning)
+  #   group: reasoning
+  #   provider: openai
+  #   api_model_id: gpt-5
+  #   response_file: data/responses/raw/gpt-5.json
+
+  - id: deepseek-r1
+    display_name: DeepSeek-R1
+    group: reasoning
+    provider: deepseek
+    api_model_id: deepseek-reasoner
+    response_file: data/responses/raw/deepseek-r1.json
+
+  # COMMENTED OUT - Need OpenRouter API key
+  # - id: deepseek-r1-zero
+  #   display_name: DeepSeek-R1-Zero
+  #   group: reasoning
+  #   provider: openrouter
+  #   api_model_id: deepseek/deepseek-r1-zero
+  #   response_file: data/responses/raw/deepseek-r1-zero.json
+
+  # COMMENTED OUT - Need Together API key
+  # - id: qwq-32b
+  #   display_name: QwQ-32B
+  #   group: reasoning
+  #   provider: together
+  #   api_model_id: Qwen/QwQ-32B-Preview
+  #   response_file: data/responses/raw/qwq-32b.json
+
+  # Note: Using Gemini models as standard (not reasoning-specialized) since
+  # they don't have the same extended CoT as o3/GPT-5
+
+  # Note: Claude models don't have extended "thinking" mode like o3/GPT-5
+  # So treating them as standard models
+
+  # COMMENTED OUT - Need OpenRouter API key
+  # - id: grok-3-thinking
+  #   display_name: Grok 3 Thinking
+  #   group: reasoning
+  #   provider: openrouter
+  #   api_model_id: x-ai/grok-3-thinking
+  #   response_file: data/responses/raw/grok-3-thinking.json
+
+  # - id: kimi-k2-thinking
+  #   display_name: Kimi K2 Thinking
+  #   group: reasoning
+  #   provider: openrouter
+  #   api_model_id: moonshot/kimi-k2-thinking
+  #   response_file: data/responses/raw/kimi-k2-thinking.json
+
+  # COMMENTED OUT - Need Together API key
+  # - id: qwen3-235b-thinking
+  #   display_name: Qwen3-235B (thinking)
+  #   group: reasoning
+  #   provider: together
+  #   api_model_id: Qwen/Qwen3-235B-Instruct-Thinking
+  #   response_file: data/responses/raw/qwen3-235b-thinking.json
+
+  # COMMENTED OUT - Need OpenRouter API key
+  # - id: sky-t1
+  #   display_name: Sky-T1
+  #   group: reasoning
+  #   provider: openrouter
+  #   api_model_id: skywork/sky-t1-32b-preview
+  #   response_file: data/responses/raw/sky-t1.json
+
+  # === STANDARD INSTRUCTION-TUNED (N=22) ===
+  - id: gpt-4o-2024-11-20
+    display_name: GPT-4o
+    group: standard
+    provider: openai
+    api_model_id: gpt-4o-2024-11-20
+    response_file: data/responses/raw/gpt-4o-2024-11-20.json
+
+  # COMMENTED OUT - Too expensive ($32.95 and $16.48 per 513 items)
+  # - id: gpt-5-5
+  #   display_name: GPT-5.5
+  #   group: standard
+  #   provider: openai
+  #   api_model_id: gpt-5.5
+  #   response_file: data/responses/raw/gpt-5-5.json
+
+  # - id: gpt-5-4
+  #   display_name: GPT-5.4
+  #   group: standard
+  #   provider: openai
+  #   api_model_id: gpt-5.4
+  #   response_file: data/responses/raw/gpt-5-4.json
+
+  - id: gpt-5-mini
+    display_name: GPT-5 mini
+    group: standard
+    provider: openai
+    api_model_id: gpt-5-mini
+    response_file: data/responses/raw/gpt-5-mini.json
+
+  - id: gpt-4-1
+    display_name: GPT-4.1
+    group: standard
+    provider: openai
+    api_model_id: gpt-4.1
+    response_file: data/responses/raw/gpt-4-1.json
+
+  - id: gpt-4-1-mini
+    display_name: GPT-4.1 mini
+    group: standard
+    provider: openai
+    api_model_id: gpt-4.1-mini
+    response_file: data/responses/raw/gpt-4-1-mini.json
+
+  - id: claude-opus-4-7
+    display_name: Claude Opus 4.7
+    group: standard
+    provider: anthropic
+    api_model_id: claude-opus-4-7
+    response_file: data/responses/raw/claude-opus-4-7.json
+
+  - id: claude-sonnet-4-6
+    display_name: Claude Sonnet 4.6
+    group: standard
+    provider: anthropic
+    api_model_id: claude-sonnet-4-6
+    response_file: data/responses/raw/claude-sonnet-4-6.json
+
+  - id: claude-haiku-4-5
+    display_name: Claude Haiku 4.5
+    group: standard
+    provider: anthropic
+    api_model_id: claude-haiku-4-5-20251001
+    response_file: data/responses/raw/claude-haiku-4-5.json
+
+  # Legacy Claude models (still available)
+  - id: claude-opus-4-6
+    display_name: Claude Opus 4.6
+    group: standard
+    provider: anthropic
+    api_model_id: claude-opus-4-6
+    response_file: data/responses/raw/claude-opus-4-6.json
+
+  - id: claude-sonnet-4-5
+    display_name: Claude Sonnet 4.5
+    group: standard
+    provider: anthropic
+    api_model_id: claude-sonnet-4-5-20250929
+    response_file: data/responses/raw/claude-sonnet-4-5.json
+
+  - id: claude-opus-4-5
+    display_name: Claude Opus 4.5
+    group: standard
+    provider: anthropic
+    api_model_id: claude-opus-4-5-20251101
+    response_file: data/responses/raw/claude-opus-4-5.json
+
+  # COMMENTED OUT - Too expensive ($25.65 per 513 items - older pricing)
+  # - id: claude-opus-4-1
+  #   display_name: Claude Opus 4.1
+  #   group: standard
+  #   provider: anthropic
+  #   api_model_id: claude-opus-4-1-20250805
+  #   response_file: data/responses/raw/claude-opus-4-1.json
+
+  - id: gemini-3-5-flash
+    display_name: Gemini 3.5 Flash
+    group: standard
+    provider: google
+    api_model_id: gemini-3.5-flash
+    response_file: data/responses/raw/gemini-3-5-flash.json
+
+  - id: gemini-3-1-flash-lite
+    display_name: Gemini 3.1 Flash Lite
+    group: standard
+    provider: google
+    api_model_id: gemini-3.1-flash-lite
+    response_file: data/responses/raw/gemini-3-1-flash-lite.json
+
+  - id: gemini-2-5-pro
+    display_name: Gemini 2.5 Pro
+    group: standard
+    provider: google
+    api_model_id: gemini-2.5-pro
+    response_file: data/responses/raw/gemini-2-5-pro.json
+
+  - id: gemini-2-5-flash
+    display_name: Gemini 2.5 Flash
+    group: standard
+    provider: google
+    api_model_id: gemini-2.5-flash
+    response_file: data/responses/raw/gemini-2-5-flash.json
+
+  - id: gemini-2-5-flash-lite
+    display_name: Gemini 2.5 Flash Lite
+    group: standard
+    provider: google
+    api_model_id: gemini-2.5-flash-lite
+    response_file: data/responses/raw/gemini-2-5-flash-lite.json
+
+  # COMMENTED OUT - Need Together API key
+  # - id: llama-3-1-405b
+  #   display_name: Llama 3.1 405B
+  #   group: standard
+  #   provider: together
+  #   api_model_id: meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo
+  #   response_file: data/responses/raw/llama-3-1-405b.json
+
+  # - id: llama-3-3-70b
+  #   display_name: Llama 3.3 70B
+  #   group: standard
+  #   provider: together
+  #   api_model_id: meta-llama/Llama-3.3-70B-Instruct-Turbo
+  #   response_file: data/responses/raw/llama-3-3-70b.json
+
+  # - id: llama-4-maverick
+  #   display_name: Llama 4 Maverick
+  #   group: standard
+  #   provider: together
+  #   api_model_id: meta-llama/Llama-4-Maverick-405B
+  #   response_file: data/responses/raw/llama-4-maverick.json
+
+  - id: deepseek-v3
+    display_name: DeepSeek-V3
+    group: standard
+    provider: deepseek
+    api_model_id: deepseek-chat
+    response_file: data/responses/raw/deepseek-v3.json
+
+  - id: deepseek-v4-flash
+    display_name: DeepSeek-V4 Flash
+    group: standard
+    provider: deepseek
+    api_model_id: deepseek-v4-flash
+    response_file: data/responses/raw/deepseek-v4-flash.json
+
+  # COMMENTED OUT - Need Together API key
+  # - id: qwen2-5-72b
+  #   display_name: Qwen2.5-72B
+  #   group: standard
+  #   provider: together
+  #   api_model_id: Qwen/Qwen2.5-72B-Instruct-Turbo
+  #   response_file: data/responses/raw/qwen2-5-72b.json
+
+  # - id: qwen3-72b
+  #   display_name: Qwen3-72B
+  #   group: standard
+  #   provider: together
+  #   api_model_id: Qwen/Qwen3-72B-Instruct
+  #   response_file: data/responses/raw/qwen3-72b.json
+
+  # COMMENTED OUT - Need OpenRouter API key
+  # - id: mistral-large
+  #   display_name: Mistral Large
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: mistralai/mistral-large-2411
+  #   response_file: data/responses/raw/mistral-large.json
+
+  # - id: command-r-plus
+  #   display_name: Command R+
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: cohere/command-r-plus
+  #   response_file: data/responses/raw/command-r-plus.json
+
+  # - id: phi-4
+  #   display_name: Phi-4
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: microsoft/phi-4
+  #   response_file: data/responses/raw/phi-4.json
+
+  # - id: gemma-3-27b
+  #   display_name: Gemma 3 27B
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: google/gemma-3-27b-it
+  #   response_file: data/responses/raw/gemma-3-27b.json
+
+  # - id: nemotron-4-340b
+  #   display_name: Nemotron-4-340B
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: nvidia/nemotron-4-340b-instruct
+  #   response_file: data/responses/raw/nemotron-4-340b.json
+
+  # - id: yi-large
+  #   display_name: Yi-Large
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: 01-ai/yi-large
+  #   response_file: data/responses/raw/yi-large.json
+
+  # - id: falcon-180b
+  #   display_name: Falcon-180B
+  #   group: standard
+  #   provider: openrouter
+  #   api_model_id: tiiuae/falcon-180b-chat
+  #   response_file: data/responses/raw/falcon-180b.json

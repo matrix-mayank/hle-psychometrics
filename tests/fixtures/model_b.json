@@ -1,0 +1,14 @@
+{
+  "q1": {
+    "model": "model-b",
+    "response": "Explanation: test\nAnswer: A\nConfidence: 80%"
+  },
+  "q2": {
+    "model": "model-b",
+    "response": "Explanation: test\nAnswer: A\nConfidence: 40%"
+  },
+  "q3": {
+    "model": "model-b",
+    "response": "Explanation: test\nAnswer: C\nConfidence: 60%"
+  }
+}

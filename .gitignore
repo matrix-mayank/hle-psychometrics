@@ -1,0 +1,24 @@
+# Virtual environments
+.venv/
+.venv_libs/
+
+# Cache directories
+.hf_cache/
+.pdf_libs/
+__pycache__/
+*.py[cod]
+
+# System files
+.DS_Store
+
+# Environment variables (CONTAINS API KEYS - NEVER COMMIT!)
+.env
+
+# Data files (large, regenerable)
+data/responses/raw/
+data/responses/scored/
+data/matrix/
+data/cache/
+
+# Build artifacts
+*.egg-info/
