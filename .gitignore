@@ -14,11 +14,8 @@ __pycache__/
 # Environment variables (CONTAINS API KEYS - NEVER COMMIT!)
 .env
 
-# Data files (large, regenerable)
-data/responses/raw/
-data/responses/scored/
-data/matrix/
-data/cache/
+# Data files - now included in repo for reproducibility
+# (Total size: ~29MB, within GitHub limits)
 
 # Build artifacts
 *.egg-info/
