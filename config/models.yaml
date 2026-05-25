@@ -56,6 +56,13 @@ models:
     api_model_id: o4-mini
     response_file: data/responses/raw/o4-mini.json
 
+  - id: o1-mini
+    display_name: o1-mini
+    group: reasoning
+    provider: openai
+    api_model_id: o1-mini
+    response_file: data/responses/raw/o1-mini.json
+
   # COMMENTED OUT - Too expensive ($10.81), have GPT-4o/4.1 for standard coverage
   # - id: gpt-5
   #   display_name: GPT-5 (reasoning)
@@ -167,6 +174,41 @@ models:
     provider: openai
     api_model_id: gpt-4.1-mini
     response_file: data/responses/raw/gpt-4-1-mini.json
+
+  - id: gpt-4-1-nano
+    display_name: GPT-4.1 nano
+    group: standard
+    provider: openai
+    api_model_id: gpt-4.1-nano
+    response_file: data/responses/raw/gpt-4-1-nano.json
+
+  - id: gpt-5-4-mini
+    display_name: GPT-5.4 mini
+    group: standard
+    provider: openai
+    api_model_id: gpt-5.4-mini
+    response_file: data/responses/raw/gpt-5-4-mini.json
+
+  - id: gpt-5-4-nano
+    display_name: GPT-5.4 nano
+    group: standard
+    provider: openai
+    api_model_id: gpt-5.4-nano
+    response_file: data/responses/raw/gpt-5-4-nano.json
+
+  - id: gpt-5-nano
+    display_name: GPT-5 nano
+    group: standard
+    provider: openai
+    api_model_id: gpt-5-nano
+    response_file: data/responses/raw/gpt-5-nano.json
+
+  - id: gpt-4o-mini
+    display_name: GPT-4o mini
+    group: standard
+    provider: openai
+    api_model_id: gpt-4o-mini
+    response_file: data/responses/raw/gpt-4o-mini.json
 
   - id: claude-opus-4-7
     display_name: Claude Opus 4.7
@@ -289,6 +331,13 @@ models:
     provider: deepseek
     api_model_id: deepseek-v4-flash
     response_file: data/responses/raw/deepseek-v4-flash.json
+
+  - id: deepseek-v4-pro
+    display_name: DeepSeek-V4 Pro
+    group: standard
+    provider: deepseek
+    api_model_id: deepseek-v4-pro
+    response_file: data/responses/raw/deepseek-v4-pro.json
 
   # COMMENTED OUT - Need Together API key
   # - id: qwen2-5-72b

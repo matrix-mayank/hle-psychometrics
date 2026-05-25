@@ -14,8 +14,8 @@ import pandas as pd
 ANSWER_LINE_RE = re.compile(
     r"(?im)^\s*answer\s*:\s*(.+?)\s*$",
 )
-# Fallback: isolated letter A–E (optionally wrapped in punctuation)
-LETTER_RE = re.compile(r"\b([A-E])\b", re.IGNORECASE)
+# Fallback: isolated letter A–Z (HLE has answers up to V)
+LETTER_RE = re.compile(r"\b([A-Z])\b", re.IGNORECASE)
 
 
 def extract_answer_letter(response: str) -> str | None:
@@ -37,7 +37,7 @@ def extract_answer_letter(response: str) -> str | None:
         if letter:
             return letter.group(1).upper()
         # Some models return the full choice text; take first letter if valid
-        if len(candidate) == 1 and candidate.upper() in "ABCDE":
+        if len(candidate) == 1 and candidate.upper() in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             return candidate.upper()
 
     letters = LETTER_RE.findall(text)
