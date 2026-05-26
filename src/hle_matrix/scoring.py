@@ -7,14 +7,37 @@ import re
 from pathlib import Path
 from typing import Any
 
-import pandas as pd
+try:
+    import pandas as pd
+except ModuleNotFoundError:
+    pd = None
 
 # Official HLE prompt asks models to respond with:
 #   Answer: {chosen answer}
 ANSWER_LINE_RE = re.compile(
     r"(?im)^\s*answer\s*:\s*(.+?)\s*$",
 )
-# Fallback: isolated letter A–Z (HLE has answers up to V)
+ANSWER_PATTERNS = [
+    re.compile(
+        r"(?:\*\*\s*)?Answer\s*(?:\*\*)?\s*:\s*"
+        r"(?:\*\*)?\s*(?:option\s+|choice\s+|letter\s+)?"
+        r"(?:is\s+)?(?:\*\*)?\s*\(?([A-Z])\)?"
+        r"(?:\*\*)?\s*(?=$|[\s\.,;:\)\]])",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"(?:\*\*\s*)?(?:Final\s+)?Answer\s*(?:\*\*)?\s+"
+        r"(?:is\s+)?(?:\*\*)?\s*\(?([A-Z])\)?"
+        r"(?:\*\*)?\s*(?=$|[\s\.,;:\)\]])",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"(?:correct\s+answer|answer|choice|option|letter|final\s+answer)"
+        r"[^.\n]{0,80}?\bis\s+(?:\*\*)?\s*\(?([A-Z])\)?"
+        r"(?:\*\*)?\s*(?=$|[\s\.,;:\)\]])",
+        re.IGNORECASE,
+    ),
+]
 LETTER_RE = re.compile(r"\b([A-Z])\b", re.IGNORECASE)
 
 
@@ -24,12 +47,18 @@ def extract_answer_letter(response: str) -> str | None:
 
     Priority:
     1. Explicit "Answer: ..." line (HLE eval format)
-    2. Last standalone letter A–E in the text
+    2. Markdown/prose variants such as "**Answer:** A" or "answer is **A"
     """
     if not response or not str(response).strip():
         return None
 
     text = str(response).strip()
+
+    for pattern in ANSWER_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            return match.group(1).upper()
+
     matches = ANSWER_LINE_RE.findall(text)
     if matches:
         candidate = matches[-1].strip()
@@ -40,6 +69,8 @@ def extract_answer_letter(response: str) -> str | None:
         if len(candidate) == 1 and candidate.upper() in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             return candidate.upper()
 
+    # Last-resort fallback: recovers responses that never state an answer in a
+    # recognizable format, but may pick up letters from explanation text.
     letters = LETTER_RE.findall(text)
     if letters:
         return letters[-1].upper()
@@ -79,6 +110,9 @@ def score_responses(
 
     NaN means the model did not provide a scorable response for that item.
     """
+    if pd is None:
+        raise ModuleNotFoundError("pandas is required to score responses")
+
     correct_answers = items.set_index("item_id")["answer"]
     scores: dict[str, float] = {}
 
@@ -108,6 +142,9 @@ def score_model_responses(
 
     Columns: item_id, predicted_letter, correct (0/1), missing_response
     """
+    if pd is None:
+        raise ModuleNotFoundError("pandas is required to score model responses")
+
     raw = load_predictions(predictions_path)
     rows = []
     answer_lookup = items.set_index("item_id")["answer"]
