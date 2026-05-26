@@ -25,3 +25,13 @@ gemini-2-5-flash-lite,Gemini 2.5 Flash Lite,standard,google,gemini-2.5-flash-lit
 deepseek-v3,DeepSeek-V3,standard,deepseek,deepseek-chat,data/responses/raw/deepseek-v3.json
 deepseek-v4-flash,DeepSeek-V4 Flash,standard,deepseek,deepseek-v4-flash,data/responses/raw/deepseek-v4-flash.json
 deepseek-v4-pro,DeepSeek-V4 Pro,standard,deepseek,deepseek-v4-pro,data/responses/raw/deepseek-v4-pro.json
+gemma9b-8k4k,Gemma 2 9B IT,standard,vllm-modal,google/gemma-2-9b-it,data/responses/raw/gemma9b_8k4k_responses.json
+gemma27b-16k8k,Gemma 3 27B IT,standard,vllm-modal,google/gemma-3-27b-it,data/responses/raw/gemma27b_16k8k_responses.json
+phi4-16k8k,Phi-4,standard,vllm-modal,microsoft/phi-4,data/responses/raw/phi4_16k8k_responses.json
+qwen7b-16k8k,Qwen2.5 7B Instruct,standard,vllm-modal,Qwen/Qwen2.5-7B-Instruct,data/responses/raw/qwen7b_16k8k_responses.json
+qwq-32b-16k8k,QwQ 32B,reasoning,vllm-modal,Qwen/QwQ-32B,data/responses/raw/qwq_32b_16k8k_responses.json
+sky-t1-32b-16k8k,Sky-T1 32B Preview,reasoning,vllm-modal,NovaSky-AI/Sky-T1-32B-Preview,data/responses/raw/sky_t1_32b_16k8k_responses.json
+mistral7b-16k8k,Mistral 7B Instruct v0.3,standard,vllm-modal,mistralai/Mistral-7B-Instruct-v0.3,data/responses/raw/mistral7b_16k8k_responses.json
+olmo2-7b-4k2k,OLMo 2 1124 7B Instruct,standard,vllm-modal,allenai/OLMo-2-1124-7B-Instruct,data/responses/raw/olmo2_7b_4k2k_responses.json
+falcon3-10b-16k8k,Falcon3 10B Instruct,standard,vllm-modal,tiiuae/Falcon3-10B-Instruct,data/responses/raw/falcon3_10b_16k8k_responses.json
+llama31-8b-16k8k,Llama 3.1 8B Instruct,standard,vllm-modal,meta-llama/Llama-3.1-8B-Instruct,data/responses/raw/llama31_8b_16k8k_responses.json
