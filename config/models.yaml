@@ -403,3 +403,74 @@ models:
   #   provider: openrouter
   #   api_model_id: tiiuae/falcon-180b-chat
   #   response_file: data/responses/raw/falcon-180b.json
+
+  # === LOCAL VLLM / MODAL RUNS ===
+  - id: gemma9b-8k4k
+    display_name: Gemma 2 9B IT
+    group: standard
+    provider: vllm-modal
+    api_model_id: google/gemma-2-9b-it
+    response_file: outputs_latest_json/gemma9b_8k4k_responses.json
+
+  - id: gemma27b-16k8k
+    display_name: Gemma 3 27B IT
+    group: standard
+    provider: vllm-modal
+    api_model_id: google/gemma-3-27b-it
+    response_file: outputs_latest_json/gemma27b_16k8k_responses.json
+
+  - id: phi4-16k8k
+    display_name: Phi-4
+    group: standard
+    provider: vllm-modal
+    api_model_id: microsoft/phi-4
+    response_file: outputs_latest_json/phi4_16k8k_responses.json
+
+  - id: qwen7b-16k8k
+    display_name: Qwen2.5 7B Instruct
+    group: standard
+    provider: vllm-modal
+    api_model_id: Qwen/Qwen2.5-7B-Instruct
+    response_file: outputs_latest_json/qwen7b_16k8k_responses.json
+
+  - id: qwq-32b-16k8k
+    display_name: QwQ 32B
+    group: reasoning
+    provider: vllm-modal
+    api_model_id: Qwen/QwQ-32B
+    response_file: outputs_latest_json/qwq_32b_16k8k_responses.json
+
+  - id: sky-t1-32b-16k8k
+    display_name: Sky-T1 32B Preview
+    group: reasoning
+    provider: vllm-modal
+    api_model_id: NovaSky-AI/Sky-T1-32B-Preview
+    response_file: outputs_latest_json/sky_t1_32b_16k8k_responses.json
+
+  - id: mistral7b-16k8k
+    display_name: Mistral 7B Instruct v0.3
+    group: standard
+    provider: vllm-modal
+    api_model_id: mistralai/Mistral-7B-Instruct-v0.3
+    response_file: outputs_latest_json/mistral7b_16k8k_responses.json
+
+  - id: olmo2-7b-4k2k
+    display_name: OLMo 2 1124 7B Instruct
+    group: standard
+    provider: vllm-modal
+    api_model_id: allenai/OLMo-2-1124-7B-Instruct
+    response_file: outputs_latest_json/olmo2_7b_4k2k_responses.json
+
+  - id: falcon3-10b-16k8k
+    display_name: Falcon3 10B Instruct
+    group: standard
+    provider: vllm-modal
+    api_model_id: tiiuae/Falcon3-10B-Instruct
+    response_file: outputs_latest_json/falcon3_10b_16k8k_responses.json
+
+  - id: llama31-8b-16k8k
+    display_name: Llama 3.1 8B Instruct
+    group: standard
+    provider: vllm-modal
+    api_model_id: meta-llama/Llama-3.1-8B-Instruct
+    response_file: outputs_latest_json/llama31_8b_16k8k_responses.json
