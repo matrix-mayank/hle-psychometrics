@@ -59,8 +59,6 @@ data/matrix/
 └── responses_long.csv       # Long format for stats
 
 analysis/
-├── hle_psychometric_analysis.ipynb
-├── hle_cfa_analysis.ipynb
 └── hle_cfa_dimensionality.ipynb
 
 figures/
@@ -74,16 +72,3 @@ figures/
 - Missing values (<1% after filtering) were filled with 0 for analysis
 - Open models ran on vLLM with Modal + A100 GPUs
 - 85 items had zero variance (all models got them wrong) and were dropped
-
-See `pre-analysis-plan.pdf` for the full methodology.
-
-## Citation
-
-```
-@unpublished{sharma2026hle,
-  title={Dimensionality and Measurement Precision in HLE's Multiple-Choice Subset},
-  author={Sharma, Mayank and Nadela, Savira and Matteson, Tyler},
-  year={2026},
-  institution={Stanford University}
-}
-```
