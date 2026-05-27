@@ -30,7 +30,8 @@ cs321m-project/
 │   ├── responses/raw/           # Per-model API responses
 │   └── matrix/                  # Final matrices & metadata
 ├── analysis/
-│   └── hle_cfa_dimensionality.ipynb  # IRT & CFA analysis
+│   ├── hle_2pl_item_analysis.ipynb       # 2PL IRT model & item parameters
+│   └── hle_cfa_dimensionality.ipynb      # Dimensionality analysis & figures
 ├── figures/                     # Generated plots
 └── requirements.txt             # Python dependencies (pinned versions)
 ```
@@ -99,6 +100,7 @@ data/matrix/
 └── responses_long.csv       # Long format for stats
 
 analysis/
+├── hle_2pl_item_analysis.ipynb
 └── hle_cfa_dimensionality.ipynb
 
 figures/
