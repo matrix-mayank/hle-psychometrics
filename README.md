@@ -32,7 +32,7 @@ cs321m-project/
 ├── analysis/
 │   ├── hle_2pl_item_analysis.ipynb       # 2PL IRT model & item parameters
 │   └── hle_cfa_dimensionality.ipynb      # Dimensionality analysis & figures
-├── figures/                     # Generated plots
+├── tests/                       # Unit tests for scoring logic
 └── requirements.txt             # Python dependencies (pinned versions)
 ```
 
@@ -102,9 +102,6 @@ data/matrix/
 analysis/
 ├── hle_2pl_item_analysis.ipynb
 └── hle_cfa_dimensionality.ipynb
-
-figures/
-└── *.png
 ```
 
 ## Reproducing Paper Results
@@ -119,19 +116,35 @@ To regenerate all results from the paper:
    - Produces: `data/matrix/response_matrix.csv`, `build_report.json`
    - Used for: Model accuracies, coverage statistics
 
-2. **Analysis & Figures**
+2. **Analysis**
    ```bash
+   # IRT model estimation and item parameters
+   jupyter notebook analysis/hle_2pl_item_analysis.ipynb
+   
+   # Dimensionality analysis (omega_h, PCA, domain correlations)
    jupyter notebook analysis/hle_cfa_dimensionality.ipynb
-   # Run all cells (random seeds are set: np.random.seed(42), torch.manual_seed(42))
+   
+   # Random seeds are set in notebooks: np.random.seed(42), torch.manual_seed(42)
    ```
-   - Produces: `figures/fig1.png`, `fig2.png`, `fig3.png`, `fig4.png`
-   - Paper figures: Item parameters, domain comparisons, ability estimates, test information function
+   - Produces all tables and statistics reported in the paper
 
    ```bash
    jupyter notebook analysis/hle_2pl_item_analysis.ipynb
    # Run all cells
    ```
 
+
+## Testing
+
+Run unit tests to verify scoring logic:
+```bash
+pytest tests/
+```
+
+Tests cover:
+- Answer extraction from model responses
+- Response scoring accuracy
+- Matrix construction with zero-variance filtering
 
 ## Notes
 
