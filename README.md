@@ -2,7 +2,7 @@
 
 Running psychometric analysis on Humanity's Last Exam. We collected responses from 37 models (GPT, Claude, Gemini, DeepSeek, and open models) on 513 text-only multiple-choice questions, then built a binary response matrix for IRT and factor analysis.
 
-Based on: **"Is HLE Measurement-Valid?"** (Sharma, Nadela, Matteson, Stanford 2026)
+Based on: **"Dimensionality and Measurement Precision in HLE's Multiple-Choice Subset"** (Sharma, Nadela, Matteson, Stanford 2026)
 
 ## What's in here
 
@@ -81,7 +81,7 @@ See `pre-analysis-plan.pdf` for the full methodology.
 
 ```
 @unpublished{sharma2026hle,
-  title={Is HLE Measurement-Valid?},
+  title={Dimensionality and Measurement Precision in HLE's Multiple-Choice Subset},
   author={Sharma, Mayank and Nadela, Savira and Matteson, Tyler},
   year={2026},
   institution={Stanford University}
