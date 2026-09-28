@@ -1,0 +1,6 @@
+Across 20 random seeds (a cap = 5),Mean,SD,Min,Max
+"Items at ceiling, full fit (of 428)",76.1,18.0,37,105
+"ω_h, all items",0.9983,0.0002,0.9980,0.9986
+"ω_h, ceiling items removed (no refit)",0.9972,0.0002,0.9967,0.9977
+"ω_h, 2PL re-estimated without ceiling items",0.9980,0.0003,0.9972,0.9984
+Items at ceiling after re-estimation,62.6,29.8,3,101
